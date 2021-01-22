@@ -1,0 +1,38 @@
+@import '../index';
+
+.filter {
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+
+  &__item {
+    white-space: nowrap;
+    margin-bottom: 4px;
+
+    &:not(:last-child) {
+      margin-right: 4px;
+    }
+  }
+}
+
+.item-card .filter {
+  width: 100%;
+  flex-wrap: nowrap;
+  overflow: auto;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  margin-bottom: 4px;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $blue;
+    background-image: $blue;
+    cursor: pointer;
+  }
+
+}

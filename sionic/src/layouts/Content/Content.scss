@@ -1,0 +1,29 @@
+@import '../index';
+
+.content {
+  margin-bottom: 60px;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+
+    h4 {
+      margin-right: 18rem;
+    }
+
+  }
+}
+
+.show-more {
+  height: 50px;
+  margin: 0 auto;
+  display: block;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  padding-right: 48px;
+}

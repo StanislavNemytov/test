@@ -1,0 +1,27 @@
+@import '../index';
+
+.aside__banner {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: min-content;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

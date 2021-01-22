@@ -1,0 +1,17 @@
+@import '../index';
+
+.footer {
+  clear: both;
+  background-color: $secondary;
+
+  &__connect,
+  &__app {
+    float: right;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

@@ -18,5 +18,5 @@ export const actions = {
 
   getImages: (response) => ({ type: GET_IMAGES, response }),
 
-  addProduct: (response) => ({ type: ADD_PRODUCT, response }),
+  addProduct: (id) => ({ type: ADD_PRODUCT, id }),
 };

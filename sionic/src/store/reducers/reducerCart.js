@@ -1,12 +1,25 @@
 import { ADD_PRODUCT } from "../actions/actionsTypes";
 
-export function reducerCart(state = {}, action) {
+const initialState = { cartCount: 0, cartProducts: [] };
+
+export function reducerCart(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
+      let product;
+      if (state.cartProducts) {
+        product = state.cartProducts.find(
+          (products) => products.id === action.id
+        );
+      }
+
+      product = { id: action.id, count: 1 };
+
       return {
         ...state,
-        cartProducts: [...state.cartProducts, action.cartProduct],
+        cartCount: Number(state.cartCount + 1),
+        cartProducts: [...state.cartProducts, { ...product }],
       };
+
     default:
       return state;
   }

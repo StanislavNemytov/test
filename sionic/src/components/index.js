@@ -1,6 +1,6 @@
 import { Banner } from "./Banner/Banner";
-import { Btn } from "./Btn/Btn";
-import { Cart } from "./Cart/Cart";
+import Btn from "./Btn/Btn";
+import Cart from "./Cart/Cart";
 import { Filter } from "./Filter/Filter";
 import { Gift } from "./Gift/Gift";
 import { Link } from "./Link/Link";

@@ -1,11 +1,13 @@
-import "./Cart.scss";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { selectorReducerCart } from "../../store/selectors/selector";
+import "./Cart.scss";
 
-export function Cart() {
+export function Cart({ data }) {
   return (
     <NavLink to="/cart" className="nav__cart" aria-label={`0 Item in cart`}>
       <div className="nav__cart__count__container">
-        <span className="nav__cart__count">0</span>
+        <span className="nav__cart__count">{data.cartCount}</span>
         <span className="nav__cart__icon">
           <svg
             width="20"
@@ -38,3 +40,7 @@ export function Cart() {
     </NavLink>
   );
 }
+
+const mapStateToProps = (state) => ({ data: selectorReducerCart(state) });
+
+export default connect(mapStateToProps)(Cart);

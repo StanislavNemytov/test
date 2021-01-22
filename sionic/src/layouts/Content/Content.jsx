@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import { connect } from "react-redux";
 import { Item } from "..";
 import { Btn, Filter } from "../../components";
@@ -7,7 +7,7 @@ import { selectorReducerApi } from "../../store/selectors/selector";
 import "./Content.scss";
 
 function Content({ data, getCategories, getProducts }) {
-  useEffect(() => {
+  useMemo(() => {
     getCategories();
     getProducts();
   }, []);

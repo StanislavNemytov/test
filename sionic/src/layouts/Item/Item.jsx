@@ -42,7 +42,7 @@ function Item({ item, data, getImages }) {
       </div>
 
       <div className="item-card__footer">
-        <Btn text="Добавить в корзину" classes="btn btn-outline-blue" />
+        <Btn id={id} text="Добавить в корзину" classes="btn btn-outline-blue" />
       </div>
     </div>
   );

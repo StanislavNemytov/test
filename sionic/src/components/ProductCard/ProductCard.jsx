@@ -20,11 +20,11 @@ function ProductCard({ data, removeAllProduct, dataOfState }) {
         />
       </div>
 
-      <h4>{name}</h4>
-      <span>
-        <Btn variant="remove" id={id} text="-" classes="btn btn-secondary" />
+      <p className="product-card__name" >{name}</p>
+      <span className="product-card__quantity">
+        <Btn variant="remove" id={id} text="-" classes="btn btn-link-menu-blue" />
         {count}
-        <Btn variant="add" id={id} text="+" classes="btn btn-secondary" />
+        <Btn variant="add" id={id} text="+" classes="btn btn-link-menu-blue" />
       </span>
 
       <span className="h5">{price} ₽</span>

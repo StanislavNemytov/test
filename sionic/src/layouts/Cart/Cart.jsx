@@ -21,7 +21,7 @@ function Cart({ reducerAPI, reducerCart }) {
   );
 
   return (
-    <section className="cart__content">
+    <section className="cart">
       <header className="content__header">
         <h4>Корзина</h4>
         {reducerCart.cartCount > 0 && (
@@ -32,36 +32,43 @@ function Cart({ reducerAPI, reducerCart }) {
           />
         )}
       </header>
-
-      <div className="buy-box">
-        <div className="subtotal">
-          {reducerCart.cartCount > 0 ? (
-            <>
-              <p>Стоимость корзины:</p>
-              <p>
-                <strong>{subtotal}₽</strong>
-              </p>
-            </>
-          ) : (
-            <p>Корзина пуста</p>
+      <div className="cart__content">
+        <div className="buy-box">
+          <div className="subtotal">
+            {reducerCart.cartCount > 0 ? (
+              <>
+                <p>Стоимость корзины:</p>
+                <p>
+                  <strong>{subtotal}₽</strong>
+                </p>
+              </>
+            ) : (
+              <p>Корзина пуста</p>
+            )}
+          </div>
+          {reducerCart.cartCount > 0 && (
+            <Btn text="Оформить" classes="proceed-ot-checkout btn btn-blue" />
           )}
+          <div className="buy-box__images">
+            {["bag", "cart", "discount"].map((p) => (
+              <img
+                key={p}
+                className={`buy-box__image buy-box__image_${p}`}
+                src={images[p]}
+                alt={p}
+              />
+            ))}
+          </div>
         </div>
-        {reducerCart.cartCount > 0 && (
-          <Btn text="Оформить" classes="proceed-ot-checkout btn btn-blue" />
-        )}
-        <div className="buy-box__images">
-          {["bag", "cart", "discount"].map((p) => (
-            <img className={`buy-box__image buy-box__image_${p}`} src={images[p]} alt={p} />
-          ))}
-        </div>
-      </div>
 
-      <ul className="cart__products">
-        {productsInCart &&
-          productsInCart.map((data) => (
-            <ProductCard key={data.product.name} data={data} />
-          ))}
-      </ul>
+        {productsInCart.length > 0 && (
+          <ul className="cart__products">
+            {productsInCart.map((data) => (
+              <ProductCard key={data.product.name} data={data} />
+            ))}
+          </ul>
+        )}
+      </div>
     </section>
   );
 }

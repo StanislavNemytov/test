@@ -7,7 +7,6 @@ export function Filter({ categories }) {
     "green",
     "orange",
     "light-pink",
-    "orange",
     "outline-pink",
   ];
 
@@ -17,7 +16,7 @@ export function Filter({ categories }) {
         <li className="filter__item" key={id}>
           <Btn
             text={name}
-            classes={`btn btn-small btn-${variantsOfColor[id % 6]}`}
+            classes={`btn btn-small btn-${variantsOfColor[id % 5]}`}
           />
         </li>
       ))}

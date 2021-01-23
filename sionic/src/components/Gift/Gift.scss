@@ -3,7 +3,28 @@
 .gift {
   width: 311px;
   border-radius: 20px;
-  border: 1px solid;
+  border: 1px solid $pink;
   padding: 20px;
+  padding-left: 97px;
   margin-bottom: 20px;
+  position: relative;
+
+  &__img {
+    position: absolute;
+    width: 91px;
+    height: 82px;
+    left: -11px;
+    top: 32px;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    text-align: center;
+  }
 }

@@ -30,7 +30,7 @@ export function Position() {
           />
         </svg>
       </span>
-      Aлександровск-Cахалинский
+      <span>Aлександровск-Cахалинский</span>
     </a>
   );
 }

@@ -2,13 +2,25 @@
 
 .content {
   margin-bottom: 60px;
+  padding-right: 48px;
 
   &__header {
     display: flex;
     align-items: flex-end;
+    margin-bottom: 20px;
 
     h4 {
-      margin-right: 18rem;
+      margin-right: 12rem;
+    }
+
+    &__settings {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 127.7%;
+
+      &:hover {
+        color: darken($blue, 15%);
+      }
     }
   }
 }

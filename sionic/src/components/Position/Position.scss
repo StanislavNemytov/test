@@ -1,12 +1,17 @@
 @import '../index';
 
 .header__position {
-  display: inline-flex;
-  align-items: center;
   font-size: 14px;
+  line-height: 140%;
   color: #727280;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  width: 164px;
+  white-space: nowrap;
 }
 
 .icon-pin {
   height: 20px;
+  display: inline-block;
+  vertical-align: sub;
 }

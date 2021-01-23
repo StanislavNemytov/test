@@ -1,3 +1,49 @@
+@import '../index';
+
+.cart__content {}
+
 .proceed-ot-checkout {
   height: 50px;
+}
+
+.buy-box {
+  border: 1px solid $gray-border;
+  border-radius: 20px;
+  min-height: 100px;
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  .proceed-ot-checkout {
+    width: 214px;
+  }
+
+  &__images {
+    width: 120px;
+    height: 50px;
+    position: relative;
+  }
+
+  &__image {
+    position: absolute;
+
+    &_bag {
+      left: 0%;
+      top: -68%;
+    }
+
+    &_cart {
+      left: 85.12%;
+      top: -2%;
+    }
+
+    &_discount {
+      left: 51.24%;
+      right: 1.74%;
+      top: -64%;
+      bottom: 50.2%;
+    }
+  }
 }

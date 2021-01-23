@@ -5,6 +5,9 @@ import {
   GET_PRODUCTS,
   GET_IMAGES,
   ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  REMOVE_ALL_PRODUCTS,
+  REMOVE_ALL_PRODUCT,
 } from "./actionsTypes";
 
 export const actions = {
@@ -19,4 +22,10 @@ export const actions = {
   getImages: (response) => ({ type: GET_IMAGES, response }),
 
   addProduct: (id) => ({ type: ADD_PRODUCT, id }),
+
+  removeProduct: (id) => ({ type: REMOVE_PRODUCT, id }),
+
+  removeAllProducts: (id) => ({ type: REMOVE_ALL_PRODUCTS, id }),
+
+  removeAllProduct: (id) => ({ type: REMOVE_ALL_PRODUCT, id }),
 };

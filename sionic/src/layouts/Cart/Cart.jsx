@@ -1,53 +1,73 @@
 import { connect } from "react-redux";
 import { Btn, ProductCard } from "../../components";
-import { addProduct } from "../../store/dispState";
 import "./Cart.scss";
+import bag from "../../assets/img/bag.png";
+import discount from "../../assets/img/discount.png";
+import cart from "../../assets/img/cart.png";
 
-function Cart({ reducerAPI, reducerCart, addProduct }) {
+const images = { bag, discount, cart };
+
+function Cart({ reducerAPI, reducerCart }) {
   const productsInCart = reducerCart.cartProducts.map((productInCart) => ({
     product: reducerAPI.products.find(
       (productData) => productData.id === productInCart.id
     ),
     count: productInCart.count,
   }));
-  console.log(
-    "🚀 ~ file: Cart.jsx ~ line 13 ~ productsInCart ~ productsInCart",
-    productsInCart
-  );
 
   const subtotal = productsInCart.reduce(
-    (sum, item) => sum + item.product.price,
+    (sum, item) => sum + item.product.price * item.count,
     0
   );
 
   return (
-    <section className="content">
+    <section className="cart__content">
       <header className="content__header">
         <h4>Корзина</h4>
-        <Btn text="Отчистить корзину" classes="btn btn-link-pink" />
+        {reducerCart.cartCount > 0 && (
+          <Btn
+            variant="removeAll"
+            text="Очистить корзину"
+            classes="btn btn-link-pink"
+          />
+        )}
       </header>
 
-      <div className="subtotal">
-        <p>Стоимость корзины:</p>
-        <p>
-          <strong>{subtotal}₽</strong>
-        </p>
+      <div className="buy-box">
+        <div className="subtotal">
+          {reducerCart.cartCount > 0 ? (
+            <>
+              <p>Стоимость корзины:</p>
+              <p>
+                <strong>{subtotal}₽</strong>
+              </p>
+            </>
+          ) : (
+            <p>Корзина пуста</p>
+          )}
+        </div>
+        {reducerCart.cartCount > 0 && (
+          <Btn text="Оформить" classes="proceed-ot-checkout btn btn-blue" />
+        )}
+        <div className="buy-box__images">
+          {["bag", "cart", "discount"].map((p) => (
+            <img className={`buy-box__image buy-box__image_${p}`} src={images[p]} alt={p} />
+          ))}
+        </div>
       </div>
 
-      <Btn text="Оформить" classes="proceed-ot-checkout btn btn-blue" />
-
-      {productsInCart &&
-        productsInCart.map((data) => (
-          <ProductCard key={data.name} data={data} />
-        ))}
+      <ul className="cart__products">
+        {productsInCart &&
+          productsInCart.map((data) => (
+            <ProductCard key={data.product.name} data={data} />
+          ))}
+      </ul>
     </section>
   );
 }
 
 const mapStateToProps = (state) => ({ ...state });
 
-const mapDispatchToProps = {
-  addProduct,
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -18,18 +18,18 @@ function Content({ data, getCategories, getProducts }) {
     <section className="content">
       <header className="content__header">
         <h4>Категории товаров</h4>
-        <Btn text="Настройки" classes="btn btn-link-blue" />
+        <Btn text="Настройки" classes="content__header__settings btn btn-link-blue" />
       </header>
 
       <Filter categories={categories || []} />
 
       {products && (
         <>
-          <div className="products">
+          <ul className="products">
             {products.map((item) => (
               <Item key={item.id} item={item} />
             ))}
-          </div>
+          </ul>
 
           <Btn
             text="Показать больше товаров"

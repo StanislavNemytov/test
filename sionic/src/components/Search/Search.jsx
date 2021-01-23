@@ -1,14 +1,17 @@
+import './Search.scss';
+
 export function Search() {
   return (
-    <form>
-      <label>
+    <form className="search">
+      <label className="search__label">
         <input
           type="search"
           placeholder="Поиск бренда, товара, категории..."
           name="q"
+          className="search__input"
           aria-label="Поиск бренда, товара, категории..."
         />
-        <button className="btn btn-secondary">
+        <button className="search__submit btn btn-secondary">
           <span aria-label="Поиск" className="search-btn">
             <svg
               width="20"

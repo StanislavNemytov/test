@@ -1,5 +1,5 @@
-import "./User.scss";
 import user from "../../assets/img/user.png";
+import "./User.scss";
 
 export function User() {
   return (

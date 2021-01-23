@@ -6,16 +6,18 @@ function App() {
   return (
     <Router>
       <div className="container">
+        <div className="content__base">
+          <Header />
+          <Switch>
+            <Route path="/" exact={true}>
+              <Content />
+            </Route>
+            <Route path="/cart" exact={true}>
+              <Cart />
+            </Route>
+          </Switch>
+        </div>
         <Aside />
-        <Header />
-        <Switch>
-          <Route path="/" exact={true}>
-            <Content />
-          </Route>
-          <Route path="/cart" exact={true}>
-            <Cart />
-          </Route>
-        </Switch>
       </div>
       <Footer />
     </Router>

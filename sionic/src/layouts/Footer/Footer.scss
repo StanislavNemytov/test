@@ -3,15 +3,71 @@
 .footer {
   clear: both;
   background-color: $secondary;
+  padding-top: 32px;
 
-  &__connect,
-  &__app {
-    float: right;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-right: 72px;
   }
 
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
+  .right-part {
+    display: flex;
+    padding-top: 10px;
+  }
+
+  &__connect {
+    margin-right: 36px;
+  }
+
+  &__second-part {
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    padding-bottom: 36px;
+
+    p {
+      color: $gray-disabled;
+
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  .s-v a {
+    background: url(../../assets/img/socials.png) no-repeat;
+    width: 28px;
+    height: 28px;
+    color: transparent;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    &.vk {
+      background-position-x: -44px;
+    }
+
+    &.inst {
+      background-position-x: -88px;
+    }
+  }
+
+  .apps a {
+    background: url(../../assets/img/apps.png) no-repeat;
+    width: 104px;
+    height: 32px;
+    color: transparent;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    &.aps {
+      background-position-x: -124px;
+    }
   }
 }

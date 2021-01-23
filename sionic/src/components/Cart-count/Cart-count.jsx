@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectorReducerCart } from "../../store/selectors/selector";
-import "./Cart.scss";
+import "./Cart-count.scss";
 
-export function Cart({ data }) {
+export function CartCount({ data }) {
   return (
     <NavLink to="/cart" className="nav__cart" aria-label={`0 Item in cart`}>
       <div className="nav__cart__count__container">
@@ -43,4 +43,4 @@ export function Cart({ data }) {
 
 const mapStateToProps = (state) => ({ data: selectorReducerCart(state) });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps)(CartCount);

@@ -1,4 +1,4 @@
-import { Cart, Logo, Position, Search, User } from "../../components";
+import { CartCount, Logo, Position, Search, User } from "../../components";
 import "./Header.scss";
 
 export function Header() {
@@ -7,7 +7,7 @@ export function Header() {
       <Logo />
       <Position />
       <Search />
-      <Cart />
+      <CartCount />
       <User />
     </header>
   );

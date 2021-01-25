@@ -25,7 +25,7 @@ function Btn({
 
   return (
     <button onClick={() => onClick(id)} className={classes} aria-label={text}>
-      {text}
+      <span>{text}</span>
     </button>
   );
 }

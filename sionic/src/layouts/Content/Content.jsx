@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Item } from "..";
 import { Btn, Filter } from "../../components";
@@ -7,9 +7,10 @@ import { selectorReducerApi } from "../../store/selectors/selector";
 import "./Content.scss";
 
 function Content({ data, getCategories, getProducts }) {
-  useMemo(() => {
+  useEffect(() => {
     getCategories();
     getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { products, categories } = data;
@@ -18,7 +19,10 @@ function Content({ data, getCategories, getProducts }) {
     <section className="content">
       <header className="content__header">
         <h4>Категории товаров</h4>
-        <Btn text="Настройки" classes="content__header__settings btn btn-link-blue" />
+        <Btn
+          text="Настройки"
+          classes="content__header__settings btn btn-link-blue"
+        />
       </header>
 
       <Filter categories={categories || []} />

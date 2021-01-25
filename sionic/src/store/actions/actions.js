@@ -25,7 +25,7 @@ export const actions = {
 
   removeProduct: (id) => ({ type: REMOVE_PRODUCT, id }),
 
-  removeAllProducts: (id) => ({ type: REMOVE_ALL_PRODUCTS, id }),
+  removeAllProducts: () => ({ type: REMOVE_ALL_PRODUCTS }),
 
   removeAllProduct: (id) => ({ type: REMOVE_ALL_PRODUCT, id }),
 };

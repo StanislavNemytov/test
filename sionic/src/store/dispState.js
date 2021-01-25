@@ -8,8 +8,8 @@ export const removeProduct = (id) => (dispatch) => {
   dispatch(actions.removeProduct(id));
 };
 
-export const removeAllProducts = (id) => (dispatch) => {
-  dispatch(actions.removeAllProducts(id));
+export const removeAllProducts = () => (dispatch) => {
+  dispatch(actions.removeAllProducts());
 };
 
 export const removeAllProduct = (id) => (dispatch) => {

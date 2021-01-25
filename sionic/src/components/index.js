@@ -5,6 +5,7 @@ import { Filter } from "./Filter/Filter";
 import { Gift } from "./Gift/Gift";
 import { Link } from "./Link/Link";
 import { Logo } from "./Logo/Logo";
+import Order from "./Order/Order";
 import { Position } from "./Position/Position";
 import ProductCard from "./ProductCard/ProductCard";
 import { Search } from "./Search/Search";
@@ -22,4 +23,5 @@ export {
   User,
   Banner,
   ProductCard,
+  Order,
 };

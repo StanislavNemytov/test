@@ -15,6 +15,10 @@
   .right-part {
     display: flex;
     padding-top: 10px;
+
+    p {
+      margin-bottom: 10px;
+    }
   }
 
   &__connect {

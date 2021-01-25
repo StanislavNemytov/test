@@ -1,9 +1,6 @@
 @import '../index';
 
 .content {
-  margin-bottom: 60px;
-  padding-right: 48px;
-
   &__header {
     display: flex;
     align-items: flex-end;
@@ -36,5 +33,4 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 36px;
-  padding-right: 48px;
 }

@@ -1,0 +1,4 @@
+const CHANGE_INPUT = "CHANGE_INPUT";
+const SAVE_DATA = "SAVE_DATA";
+
+export { CHANGE_INPUT, SAVE_DATA };

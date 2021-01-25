@@ -1,0 +1,128 @@
+@import '../index';
+
+.delivery {
+  &__form {
+
+
+    label {
+      display: block;
+      font-size: 16px;
+      line-height: 140%;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    &__part {
+      width: 100%;
+      max-width: 292px;
+      display: inline-block;
+      vertical-align: top;
+
+      &_left {
+        .double-input {
+          margin-bottom: 30px;
+        }
+
+        p {
+          margin-bottom: 18px;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 78px;
+      }
+    }
+  }
+
+  $inputH:40px;
+
+  input {
+    width: 100%;
+    height: $inputH;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid $secondary;
+  }
+
+  .icon_address {
+    width: 0;
+    height: $inputH;
+    position: relative;
+    z-index: 1;
+    float: left;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .icon+input {
+    padding-left: 40px;
+  }
+
+  .without-border {
+    border: none;
+    border-radius: unset;
+    padding: 0;
+    height: 40px;
+
+    &:not(:last-child) {
+      margin-right: 4px;
+    }
+
+    &[type="text"] {
+      cursor: pointer;
+    }
+  }
+
+  .double-input {
+    input {
+      width: 49%;
+
+
+      &:not(:focus-within)::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+      }
+
+      &::-webkit-datetime-edit {
+        cursor: text;
+      }
+    }
+  }
+
+  .btn {
+    height: 50px;
+    width: 100%;
+  }
+
+  .pay-description {
+    background: $secondary;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+
+    p {
+      display: flex;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        margin-bottom: 4px;
+      }
+    }
+
+    br {
+      line-height: 16;
+    }
+
+    &__price {
+      margin-top: 16px;
+    }
+  }
+}

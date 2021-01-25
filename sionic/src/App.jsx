@@ -1,6 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import { Aside, Cart, Content, Footer, Header } from "./layouts";
+import {
+  Aside,
+  Cart,
+  Content,
+  Delivery,
+  Footer,
+  Header,
+  OrdersHistory,
+} from "./layouts";
 
 function App() {
   return (
@@ -14,6 +22,12 @@ function App() {
             </Route>
             <Route path="/cart" exact={true}>
               <Cart />
+            </Route>
+            <Route path="/delivery" exact={true}>
+              <Delivery />
+            </Route>
+            <Route path="/history" exact={true}>
+              <OrdersHistory />
             </Route>
           </Switch>
         </div>

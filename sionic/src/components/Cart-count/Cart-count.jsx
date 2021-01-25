@@ -5,8 +5,11 @@ import "./Cart-count.scss";
 
 export function CartCount({ data }) {
   return (
-    <NavLink to="/cart" className="nav__cart" aria-label={`0 Item in cart`}>
-      {/* <span className="nav__cart__count__container"> */}
+    <NavLink
+      to="/cart"
+      className="nav__cart"
+      aria-label={`${data.cartCount} Item in cart`}
+    >
       <span className="nav__cart__count">{data.cartCount}</span>
       <span className="nav__cart__icon">
         <svg

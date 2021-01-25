@@ -4,6 +4,7 @@ import "./Cart.scss";
 import bag from "../../assets/img/bag.png";
 import discount from "../../assets/img/discount.png";
 import cart from "../../assets/img/cart.png";
+import { NavLink } from "react-router-dom";
 
 const images = { bag, discount, cart };
 
@@ -47,7 +48,9 @@ function Cart({ reducerAPI, reducerCart }) {
             )}
           </div>
           {reducerCart.cartCount > 0 && (
-            <Btn text="Оформить" classes="proceed-ot-checkout btn btn-blue" />
+            <NavLink to="delivery" className="proceed-ot-checkout btn btn-blue">
+              Оформить
+            </NavLink>
           )}
           <div className="buy-box__images">
             {["bag", "cart", "discount"].map((p) => (

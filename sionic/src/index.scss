@@ -13,6 +13,13 @@ body {
   background-color: $white;
 }
 
+#root {
+  display: grid;
+  min-height: 100vh;
+  height: max-content;
+  grid-template-rows: auto min-content;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -43,8 +43,8 @@ export function Footer() {
 
         <div className="footer__second-part">
           <p>© Sionic</p>
-          <p>Правовая информация</p>
-          <p>Политика конфиденциальности</p>
+          <a href="/">Правовая информация</a>
+          <a href="/">Политика конфиденциальности</a>
         </div>
       </div>
     </footer>

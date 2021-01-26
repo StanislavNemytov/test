@@ -3,7 +3,7 @@ import "./Banner.scss";
 
 export function Banner({ image, text }) {
   const location = useLocation();
-  if (location.pathname === "/delivery") {
+  if (["/delivery", "/history"].includes(location.pathname)) {
     return null;
   }
   return (

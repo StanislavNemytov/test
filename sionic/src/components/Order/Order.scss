@@ -4,16 +4,38 @@
   border: 1px solid $menu-blue;
   border-radius: 32px;
   padding: 20px;
+  display: inline-block;
+  height: max-content;
 
   h4 {
     margin-top: 0;
   }
 
   &__header {
+    position: relative;
+
     &::after {
       content: "";
       display: block;
       clear: both;
+    }
+
+    .date .btn {
+      font-size: 12px;
+    }
+
+    .trigger-info {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .chevron {
+        transition: transform .35s;
+
+        &.closed {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 
@@ -29,5 +51,54 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    height: 0;
+    transition: height .35s, padding-top .35s;
+    overflow: hidden;
+
+    &.show-info {
+      height: auto;
+      padding-top: 10px;
+    }
+
+    >div:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    .status,
+    .number-of-order,
+    .quantity,
+    .costs,
+    .address {
+      height: max-content;
+      margin-bottom: 10px;
+
+      &__label {
+        font-weight: 500;
+      }
+    }
+
+    .number-of-order {
+      flex: 60%;
+
+      .btn {
+        height: 16px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .copyToClipboard {
+    position: absolute;
+    left: -999999px;
+    z-index: -10;
   }
 }

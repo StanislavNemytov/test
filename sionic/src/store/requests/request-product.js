@@ -29,16 +29,3 @@ export const getImages = (id) => async (dispatch) => {
 export const removeCategoryId = () => async (dispatch) => {
   dispatch(actions.removeCategoryId());
 };
-
-export const getProductFromCart = (cartProducts) => async () => {
-  // console.log(
-  //   "🚀 ~ file: request-product.js ~ line 34 ~ getProductFromCart ~ cartProducts",
-  //   cartProducts
-  // );
-
-  // cartProducts.forEach((product) => {
-  //   getProduct(product.id);
-  // });
-
-  // dispatch(actions.getProductFromCart(cartProducts));
-};

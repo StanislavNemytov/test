@@ -60,7 +60,7 @@ function Btn({
   if (notButton) {
     return (
       <span className={classes}>
-        <span >{text}</span>
+        <span>{text}</span>
 
         {clickable && (
           <button

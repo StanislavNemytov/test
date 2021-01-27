@@ -10,7 +10,7 @@ export const httpRequests = {
       .get(
         `products?sort=["name","ASC"]&range=${JSON.stringify(
           range
-        )}&filter={"category_id":${categoryId}}`
+        )}&filter={"category_id":${categoryId || ""}}`
       )
       .then((res) => res)
       .catch((error) => {

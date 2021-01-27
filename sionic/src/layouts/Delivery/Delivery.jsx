@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Btn from "../../components/Btn/Btn";
+import cantRender from "../../store/cantRender";
 import { changeInput, saveOrder } from "../../store/dispDelForm";
 import { removeAllProducts } from "../../store/dispState";
+import { getImages, getProduct } from "../../store/requests";
 import {
   selectorReducerApi,
   selectorReducerCart,
-  selectorReducerDelForm,
+  selectorReducerDelForm
 } from "../../store/selectors/selector";
 import "./Delivery.scss";
 
@@ -18,13 +20,30 @@ function Delivery({
   name,
   tel,
   changeInput,
-  stateCart,
+  reducerCart,
   reducerAPI,
   saveOrder,
   removeAllProducts,
+  getProduct,
+  getImages,
 }) {
+  const { allProducts } = reducerAPI;
+  const { cartProducts } = reducerCart;
+
   const history = useHistory();
   const [inputType, setInputType] = useState({ date: "text", time: "text" });
+
+  useEffect(() => {
+    cantRender(allProducts, cartProducts, getProduct, getImages);
+  }, []);
+
+  if (cantRender(allProducts, cartProducts, getProduct, getImages, true)) {
+    return null;
+  }
+
+  if (cartProducts.length === 0) {
+    history.push("/");
+  }
 
   const changeType = ({ target, target: { name, value }, type }) => {
     if (
@@ -42,7 +61,7 @@ function Delivery({
     changeInput({ name, value });
   };
 
-  const productsInCart = stateCart.cartProducts.map((productInCart) => ({
+  const productsInCart = reducerCart.cartProducts.map((productInCart) => ({
     product: reducerAPI.allProducts.find(
       (productData) => productData.id === productInCart.id
     ),
@@ -152,16 +171,15 @@ function Delivery({
         <div className="delivery__form__part delivery__form__part_right">
           <div className="pay-description">
             <p>
-              Стоимость товаров: <span>{subtotal}₽</span>
+              Стоимость товаров: <span>{`${subtotal}₽`}</span>
             </p>
             <p>
               Стоимость доставки: <span>200₽</span>
             </p>
 
             <p className="pay-description__price">
-              Итого:{" "}
               <span>
-                <b>{subtotal + 200}₽</b>
+                <b>{`${subtotal + 200}₽`}</b>
               </span>
             </p>
           </div>
@@ -174,7 +192,7 @@ function Delivery({
 
 const mapStateToProps = (state) => ({
   data: selectorReducerDelForm(state),
-  stateCart: selectorReducerCart(state),
+  reducerCart: selectorReducerCart(state),
   reducerAPI: selectorReducerApi(state),
 });
 
@@ -182,6 +200,8 @@ const mapDispatchToProps = {
   changeInput,
   saveOrder,
   removeAllProducts,
+  getProduct,
+  getImages,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Delivery);

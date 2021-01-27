@@ -7,22 +7,32 @@ import "./ProductCard.scss";
 function ProductCard({ data, removeAllProduct, dataOfState }) {
   const { product, count } = data;
   const { name, id, price } = product;
-  const { images } = dataOfState;
-  const img = images[id];
+  let img;
+
+  if (dataOfState.images[id]) {
+    img = dataOfState.images[id];
+  }
 
   return (
     <li className="product-card">
       <div className="product-card__image">
-        <img
-          className="product-card__image_img"
-          src={`https://test2.sionic.ru${img[0].image_url}`}
-          alt={img[0].image_name}
-        />
+        {img && (
+          <img
+            className="product-card__image_img"
+            src={`https://test2.sionic.ru${img[0].image_url}`}
+            alt={img[0].image_name}
+          />
+        )}
       </div>
 
-      <p className="product-card__name" >{name}</p>
+      <p className="product-card__name">{name}</p>
       <span className="product-card__quantity">
-        <Btn variant="remove" id={id} text="-" classes="btn btn-link-menu-blue" />
+        <Btn
+          variant="remove"
+          id={id}
+          text="-"
+          classes="btn btn-link-menu-blue"
+        />
         {count}
         <Btn variant="add" id={id} text="+" classes="btn btn-link-menu-blue" />
       </span>

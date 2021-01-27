@@ -5,11 +5,19 @@ import {
   REMOVE_PRODUCT,
 } from "../actions/actionsTypes";
 
-const initialState = { cartCount: 0, cartProducts: [] };
+const initialState = {
+  cartCount: 0,
+  cartProducts: [],
+};
 
-export function reducerCart(state = initialState, action) {
+export function reducerCart(
+  state = JSON.parse(localStorage.getItem("cart")) ||
+    JSON.parse(JSON.stringify(initialState)),
+  action
+) {
   let newCartProducts = JSON.parse(JSON.stringify(state.cartProducts));
   let product;
+  let newState;
 
   const removeProduct = () => {
     let index;
@@ -36,11 +44,13 @@ export function reducerCart(state = initialState, action) {
         newCartProducts.push(product);
       }
 
-      return {
-        ...state,
+      newState = {
         cartCount: Number(state.cartCount + 1),
         cartProducts: newCartProducts,
       };
+
+      localStorage.setItem("cart", JSON.stringify(newState));
+      return newState;
 
     case REMOVE_PRODUCT:
       if (newCartProducts.length) {
@@ -53,25 +63,30 @@ export function reducerCart(state = initialState, action) {
         product.count -= 1;
       }
 
-      return {
-        ...state,
+      newState = {
         cartCount: Number(state.cartCount - 1),
         cartProducts: newCartProducts,
       };
 
+      localStorage.setItem("cart", JSON.stringify(newState));
+      return newState;
+
     case REMOVE_ALL_PRODUCTS:
-      return JSON.parse(JSON.stringify(initialState));
+      newState = JSON.parse(JSON.stringify(initialState));
+      localStorage.setItem("cart", JSON.stringify(initialState));
+      return newState;
 
     case REMOVE_ALL_PRODUCT:
       product = newCartProducts.find((products) => products.id === action.id);
       let newCartCount = Number(state.cartCount - product.count);
       removeProduct();
 
-      return {
-        ...state,
+      newState = {
         cartCount: newCartCount,
         cartProducts: newCartProducts,
       };
+      localStorage.setItem("cart", JSON.stringify(newState));
+      return newState;
 
     default:
       return state;

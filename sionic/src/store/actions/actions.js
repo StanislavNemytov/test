@@ -10,6 +10,7 @@ import {
   REMOVE_ALL_PRODUCT,
   REMOVE_CATEGORY_ID,
   GET_NEXT_PRODUCTS,
+  GET_PRODUCT_FROM_CART,
 } from "./actionsTypes";
 
 export const actions = {
@@ -38,4 +39,6 @@ export const actions = {
   removeAllProduct: (id) => ({ type: REMOVE_ALL_PRODUCT, id }),
 
   removeCategoryId: () => ({ type: REMOVE_CATEGORY_ID }),
+
+  getProductFromCart: () => ({ type: GET_PRODUCT_FROM_CART }),
 };

@@ -1,16 +1,30 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Btn, ProductCard } from "../../components";
-import "./Cart.scss";
-import bag from "../../assets/img/bag.png";
-import discount from "../../assets/img/discount.png";
-import cart from "../../assets/img/cart.png";
 import { NavLink } from "react-router-dom";
+import bag from "../../assets/img/bag.png";
+import cart from "../../assets/img/cart.png";
+import discount from "../../assets/img/discount.png";
+import { Btn, ProductCard } from "../../components";
+import cantRender from "../../store/cantRender";
+import { getImages, getProduct } from "../../store/requests";
+import "./Cart.scss";
 
 const images = { bag, discount, cart };
 
-function Cart({ reducerAPI, reducerCart }) {
-  const productsInCart = reducerCart.cartProducts.map((productInCart) => ({
-    product: reducerAPI.allProducts.find(
+function Cart({ reducerAPI, reducerCart, getProduct, getImages }) {
+  const { allProducts } = reducerAPI;
+  const { cartProducts, cartCount } = reducerCart;
+
+  useEffect(() => {
+    cantRender(allProducts, cartProducts, getProduct, getImages);
+  }, []);
+
+  if (cantRender(allProducts, cartProducts, getProduct, getImages, true)) {
+    return null;
+  }
+
+  const productsInCart = cartProducts.map((productInCart) => ({
+    product: allProducts.find(
       (productData) => productData.id === productInCart.id
     ),
     count: productInCart.count,
@@ -25,7 +39,7 @@ function Cart({ reducerAPI, reducerCart }) {
     <section className="cart">
       <header className="content__header">
         <h4>Корзина</h4>
-        {reducerCart.cartCount > 0 && (
+        {cartCount > 0 && (
           <Btn
             variant="removeAll"
             text="Очистить корзину"
@@ -36,7 +50,7 @@ function Cart({ reducerAPI, reducerCart }) {
       <div className="cart__content">
         <div className="buy-box">
           <div className="subtotal">
-            {reducerCart.cartCount > 0 ? (
+            {cartCount > 0 ? (
               <>
                 <p>Стоимость корзины:</p>
                 <p>
@@ -47,7 +61,7 @@ function Cart({ reducerAPI, reducerCart }) {
               <p>Корзина пуста</p>
             )}
           </div>
-          {reducerCart.cartCount > 0 && (
+          {cartCount > 0 && (
             <NavLink to="delivery" className="proceed-ot-checkout btn btn-blue">
               Оформить
             </NavLink>
@@ -78,6 +92,6 @@ function Cart({ reducerAPI, reducerCart }) {
 
 const mapStateToProps = (state) => ({ ...state });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { getProduct, getImages };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

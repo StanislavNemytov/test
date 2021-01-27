@@ -30,6 +30,7 @@ const initialState = {
   categories: [],
   products: [],
   currentRange: [0, 24],
+  images: {},
 };
 
 export function reducerAPI(state = initialState, action) {
@@ -48,6 +49,10 @@ export function reducerAPI(state = initialState, action) {
       return {
         ...state,
         product: action.response.data,
+        allProducts: [
+          ...state.allProducts,
+          ...filterNewProducts(state.allProducts, [action.response.data]),
+        ],
       };
 
     case GET_IMAGES:

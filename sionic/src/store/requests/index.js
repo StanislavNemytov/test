@@ -6,6 +6,7 @@ import {
   getProductsByCategoryId,
   removeCategoryId,
   getNextProducts,
+  getProductFromCart,
 } from "./request-product";
 
 export {
@@ -16,4 +17,5 @@ export {
   getProductsByCategoryId,
   removeCategoryId,
   getNextProducts,
+  getProductFromCart,
 };

@@ -7,13 +7,13 @@ import { selectorReducerApi } from "../../store/selectors/selector";
 import "./Content.scss";
 
 function Content({ data, getCategories, getProducts }) {
+  const { products, categories, currentRange, categoryId } = data;
+
   useEffect(() => {
-    getCategories();
-    getProducts();
+    categories.length === 0 && getCategories();
+    products.length === 0 && getProducts(currentRange);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const { products, categories } = data;
 
   return (
     <section className="content">
@@ -25,7 +25,7 @@ function Content({ data, getCategories, getProducts }) {
         />
       </header>
 
-      <Filter categories={categories || []} />
+      <Filter categories={categories || []} clickable={true} />
 
       {products && (
         <>
@@ -36,6 +36,9 @@ function Content({ data, getCategories, getProducts }) {
           </ul>
 
           <Btn
+            id={categoryId}
+            variant="nextProducts"
+            nextRange={true}
             text="Показать больше товаров"
             classes="show-more btn btn-secondary"
           />

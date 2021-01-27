@@ -28,6 +28,11 @@
       position: absolute;
       right: 0;
       top: 0;
+      cursor: pointer;
+
+      &:hover path {
+        stroke: darken($menu-blue, 15%);
+      }
 
       .chevron {
         transition: transform .35s;

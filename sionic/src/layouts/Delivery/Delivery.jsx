@@ -2,7 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Btn from "../../components/Btn/Btn";
-import { changeInput, saveOrder } from "../../store/dispDelFrom";
+import { changeInput, saveOrder } from "../../store/dispDelForm";
 import { removeAllProducts } from "../../store/dispState";
 import {
   selectorReducerApi,
@@ -43,7 +43,7 @@ function Delivery({
   };
 
   const productsInCart = stateCart.cartProducts.map((productInCart) => ({
-    product: reducerAPI.products.find(
+    product: reducerAPI.allProducts.find(
       (productData) => productData.id === productInCart.id
     ),
     count: productInCart.count,

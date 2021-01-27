@@ -1,4 +1,19 @@
-import { getCategories, getCategory } from "./request-category";
-import { getProducts, getProduct, getImages } from "./request-product";
+import { getCategories } from "./request-category";
+import {
+  getImages,
+  getProduct,
+  getProducts,
+  getProductsByCategoryId,
+  removeCategoryId,
+  getNextProducts,
+} from "./request-product";
 
-export { getProducts, getProduct, getImages, getCategories, getCategory };
+export {
+  getProducts,
+  getProduct,
+  getImages,
+  getCategories,
+  getProductsByCategoryId,
+  removeCategoryId,
+  getNextProducts,
+};

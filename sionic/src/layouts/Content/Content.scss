@@ -29,8 +29,9 @@
 }
 
 .products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
+  justify-items: center;
+  row-gap: 36px;
   margin-bottom: 36px;
 }

@@ -1,7 +1,7 @@
 import { Banner } from "./Banner/Banner";
 import Btn from "./Btn/Btn";
 import CartCount from "./Cart-count/Cart-count";
-import { Filter } from "./Filter/Filter";
+import Filter from "./Filter/Filter";
 import { Gift } from "./Gift/Gift";
 import { Link } from "./Link/Link";
 import { Logo } from "./Logo/Logo";

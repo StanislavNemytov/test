@@ -10,7 +10,7 @@ const images = { bag, discount, cart };
 
 function Cart({ reducerAPI, reducerCart }) {
   const productsInCart = reducerCart.cartProducts.map((productInCart) => ({
-    product: reducerAPI.products.find(
+    product: reducerAPI.allProducts.find(
       (productData) => productData.id === productInCart.id
     ),
     count: productInCart.count,

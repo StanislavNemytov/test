@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { connect } from "react-redux";
-import { Btn } from "..";
 import "./Order.scss";
 
 function Order({

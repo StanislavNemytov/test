@@ -5,5 +5,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 0;
-  margin-bottom: 24px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1366px;
+  margin: auto;
+  z-index: 2;
+  background: white;
+  padding-right: 411px;
 }

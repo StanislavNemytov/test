@@ -5,9 +5,13 @@ export const instance = axios.create({
 });
 
 export const httpRequests = {
-  getProducts: () => {
+  getProducts: (range, categoryId) => {
     return instance
-      .get('products?sort=["name","ASC"]&range=[0,24]')
+      .get(
+        `products?sort=["name","ASC"]&range=${JSON.stringify(
+          range
+        )}&filter={"category_id":${categoryId}}`
+      )
       .then((res) => res)
       .catch((error) => {
         console.log(error);
@@ -41,9 +45,11 @@ export const httpRequests = {
       });
   },
 
-  getCategory: (category_id) => {
+  getProductsByCategoryId: (category_id) => {
     return instance
-      .get(`categories/${category_id}`)
+      .get(
+        `Products?sort=["name","ASC"]&range=[0,24]&filter={"category_id":${category_id}}`
+      )
       .then((resp) => resp)
       .catch((error) => {
         console.log(error);

@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
   position: fixed;
   left: 0;
   top: 0;
@@ -14,5 +13,5 @@
   margin: auto;
   z-index: 2;
   background: white;
-  padding-right: 411px;
+  padding: 20px 411px 20px 50px;
 }

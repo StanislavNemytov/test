@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Btn from "../../components/Btn/Btn";
-import cantRender from "../../store/cantRender";
 import { changeInput, saveOrder } from "../../store/dispDelForm";
 import { removeAllProducts } from "../../store/dispState";
 import { getImages, getProduct } from "../../store/requests";
 import {
   selectorReducerApi,
   selectorReducerCart,
-  selectorReducerDelForm
+  selectorReducerDelForm,
 } from "../../store/selectors/selector";
 import "./Delivery.scss";
 
@@ -24,22 +23,13 @@ function Delivery({
   reducerAPI,
   saveOrder,
   removeAllProducts,
-  getProduct,
-  getImages,
 }) {
-  const { allProducts } = reducerAPI;
   const { cartProducts } = reducerCart;
 
   const history = useHistory();
   const [inputType, setInputType] = useState({ date: "text", time: "text" });
 
-  useEffect(() => {
-    cantRender(allProducts, cartProducts, getProduct, getImages);
-  }, []);
 
-  if (cantRender(allProducts, cartProducts, getProduct, getImages, true)) {
-    return null;
-  }
 
   if (cartProducts.length === 0) {
     history.push("/");
@@ -122,7 +112,6 @@ function Delivery({
                 height="20"
                 viewBox="0 0 20 20"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M4 9.68421L16 4L10.3158 16L9.05263 10.9474L4 9.68421Z"
@@ -177,7 +166,7 @@ function Delivery({
               Стоимость доставки: <span>200₽</span>
             </p>
 
-            <p className="pay-description__price">
+            <p classNam e="pay-description__price">
               <span>
                 <b>{`${subtotal + 200}₽`}</b>
               </span>

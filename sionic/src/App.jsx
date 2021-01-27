@@ -1,5 +1,7 @@
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
+import withCantRendering from "./components/withCantRendering/withCantRendering";
 import {
   Aside,
   Cart,
@@ -9,8 +11,16 @@ import {
   Header,
   OrdersHistory,
 } from "./layouts";
+import { getImages, getProduct } from "./store/requests";
+import {
+  selectorReducerApi,
+  selectorReducerCart,
+} from "./store/selectors/selector";
 
-function App() {
+const CartWithCantRendering = withCantRendering(Cart);
+const DeliveryWithCantRendering = withCantRendering(Delivery);
+
+function App(props) {
   return (
     <Router>
       <div className="container">
@@ -21,10 +31,10 @@ function App() {
               <Content />
             </Route>
             <Route path="/cart" exact={true}>
-              <Cart />
+              <CartWithCantRendering {...props} />
             </Route>
             <Route path="/delivery" exact={true}>
-              <Delivery />
+              <DeliveryWithCantRendering {...props} />
             </Route>
             <Route path="/history" exact={true}>
               <OrdersHistory />
@@ -38,4 +48,14 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  cartProducts: selectorReducerCart(state).cartProducts,
+  allProducts: selectorReducerApi(state).allProducts,
+});
+
+const mapDispatchToProps = {
+  getProduct,
+  getImages,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

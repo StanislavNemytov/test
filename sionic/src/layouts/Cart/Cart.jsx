@@ -1,27 +1,17 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import bag from "../../assets/img/bag.png";
 import cart from "../../assets/img/cart.png";
 import discount from "../../assets/img/discount.png";
 import { Btn, ProductCard } from "../../components";
-import cantRender from "../../store/cantRender";
 import { getImages, getProduct } from "../../store/requests";
 import "./Cart.scss";
 
 const images = { bag, discount, cart };
 
-function Cart({ reducerAPI, reducerCart, getProduct, getImages }) {
+function Cart({ reducerAPI, reducerCart }) {
   const { allProducts } = reducerAPI;
   const { cartProducts, cartCount } = reducerCart;
-
-  useEffect(() => {
-    cantRender(allProducts, cartProducts, getProduct, getImages);
-  }, []);
-
-  if (cantRender(allProducts, cartProducts, getProduct, getImages, true)) {
-    return null;
-  }
 
   const productsInCart = cartProducts.map((productInCart) => ({
     product: allProducts.find(

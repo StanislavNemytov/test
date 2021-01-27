@@ -1,6 +1,11 @@
 @import '../index';
 
 .cart {
+  .content__header {
+    h4 {
+      margin-right: 30px;
+    }
+  }
 
   &__content {
     border: 1px solid $menu-blue;

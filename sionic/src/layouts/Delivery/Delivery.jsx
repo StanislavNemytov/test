@@ -59,7 +59,7 @@ function Delivery({
   }));
 
   const subtotal = productsInCart.reduce(
-    (sum, item) => sum + item.product.price * item.count,
+    (sum, item) => sum + item.product.price || 123 * item.count,
     0
   );
 
@@ -166,7 +166,7 @@ function Delivery({
               Стоимость доставки: <span>200₽</span>
             </p>
 
-            <p classNam e="pay-description__price">
+            <p className="pay-description__price">
               <span>
                 <b>{`${subtotal + 200}₽`}</b>
               </span>

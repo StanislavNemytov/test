@@ -21,7 +21,7 @@ function Cart({ reducerAPI, reducerCart }) {
   }));
 
   const subtotal = productsInCart.reduce(
-    (sum, item) => sum + item.product.price * item.count,
+    (sum, item) => sum + item.product.price || 123 * item.count,
     0
   );
 

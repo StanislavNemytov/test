@@ -34,8 +34,4 @@ const mapStateToProps = (state) => ({
   reducerAPI: selectorReducerApi(state),
 });
 
-const mapDispatchToProps = {
-  // getImages
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps)(Filter);

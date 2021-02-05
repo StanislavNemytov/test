@@ -33,12 +33,10 @@ function Item({ item, data, getImages }) {
       </div>
 
       <div className="item-card__body">
-        <a className="item-card__link" href="/">{name}</a>
-        <p className="price t-blue">{price} ₽</p>
-        {/* <p className="price_old t-disabled">
-          <strike>{oldPrice}</strike>
-          <span className="discount t-pink">{discount}</span>
-        </p> */}
+        <a className="item-card__link" href="/">
+          {name}
+        </a>
+        <p className="price t-blue">{price || "123"} ₽</p>
       </div>
 
       <div className="item-card__footer">

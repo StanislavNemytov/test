@@ -39,7 +39,6 @@ export function CartCount({ data }) {
           />
         </svg>
       </span>
-      {/* </span> */}
     </NavLink>
   );
 }

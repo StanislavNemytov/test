@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { connect } from "react-redux";
 import "./Order.scss";
 
 function Order({
@@ -8,8 +7,6 @@ function Order({
   date,
   time,
   address,
-  name,
-  tel,
   productsInOrder,
   status,
 }) {
@@ -20,7 +17,7 @@ function Order({
     .split(":")
     .join("")}`;
   const costs = productsInOrder.reduce(
-    (sum, item) => sum + item.product.price,
+    (sum, item) => sum + item.product.price || 123,
     0
   );
 
@@ -40,7 +37,7 @@ function Order({
     };
 
     const arrayFromChildren = Array.from(historyBodyRef.current.children);
-    arrayFromChildren.forEach((item, index) => {
+    arrayFromChildren.forEach((item) => {
       const { top, bottom } = item.getBoundingClientRect();
 
       position.top = position.top === 0 ? top : position.top;
@@ -64,7 +61,9 @@ function Order({
             />
           )}
         </div>
+
         <h4>{nameOfOrder}</h4>
+
         <p className="date t-gray">
           {date.split("-").join(".")}{" "}
           <button
@@ -77,6 +76,7 @@ function Order({
             Подробнее
           </button>
         </p>
+
         <button
           onClick={(e) => {
             setInfoVisible(!infoVisible);
@@ -116,10 +116,12 @@ function Order({
             </strong>
           </p>
         </div>
+
         <div className="number-of-order">
           <p className="number-of-order__label t-gray">Номер заказа</p>
           <p className="number-of-order__content t-blue">
             <strong>{numberOfOrder}</strong>
+
             <button onClick={copyNumberOfOrder} className="btn btn-link-blue">
               <span>
                 <svg
@@ -148,6 +150,7 @@ function Order({
             </button>
           </p>
         </div>
+
         <div className="quantity">
           <p className="quantity__label t-gray">Кол-во товаров</p>
           <p className="quantity__content">
@@ -156,12 +159,14 @@ function Order({
             </strong>
           </p>
         </div>
+
         <div className="costs">
           <p className="costs__label t-gray">Стоимость</p>
           <p className="costs__content">
             <strong>{costs}₽</strong>
           </p>
         </div>
+
         <div className="address">
           <p className="address__label t-gray">Адрес доставки</p>
           <p className="address__content">
@@ -169,6 +174,7 @@ function Order({
           </p>
         </div>
       </div>
+
       <textarea
         className="copyToClipboard"
         ref={numberOfOrderRef}
@@ -180,13 +186,4 @@ function Order({
   );
 }
 
-const mapStateToProps = (state) => ({
-  // data: selectorReducerDelForm(state),
-  // reducerAPI: selectorReducerApi(state),
-});
-
-const mapDispatchToProps = {
-  // getImages
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Order);
+export default Order;

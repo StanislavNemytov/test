@@ -8,10 +8,18 @@
   text-overflow: ellipsis;
   width: 164px;
   white-space: nowrap;
+  margin-right: 8px;
+  min-width: 120px;
 }
 
 .icon-pin {
   height: 20px;
   display: inline-block;
   vertical-align: sub;
+}
+
+@media screen and (max-width: 767.98px) {
+  .header__position {
+    display: none;
+  }
 }

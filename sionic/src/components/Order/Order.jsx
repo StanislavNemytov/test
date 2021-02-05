@@ -16,8 +16,9 @@ function Order({
   const numberOfOrder = `#${date.split("-").join("")}${time
     .split(":")
     .join("")}`;
+
   const costs = productsInOrder.reduce(
-    (sum, item) => sum + item.product.price || 123,
+    (sum, item) => sum + (item.product.price || 123) * item.count,
     0
   );
 

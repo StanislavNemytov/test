@@ -42,7 +42,7 @@ export function Footer() {
         </div>
 
         <div className="footer__second-part">
-          <p>© Sionic</p>
+          <p>© StasNemy</p>
           <a href="/">Правовая информация</a>
           <a href="/">Политика конфиденциальности</a>
         </div>

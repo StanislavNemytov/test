@@ -33,7 +33,8 @@
     margin-top: 60px;
     padding-bottom: 36px;
 
-    p, a {
+    p,
+    a {
       color: $gray-disabled;
 
       &:not(:last-child) {
@@ -73,6 +74,32 @@
 
     &.aps {
       background-position-x: -124px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .footer .container {
+    padding: 0 24px;
+  }
+}
+
+@media screen and (max-width: 576.98px) {
+  .footer {
+
+    .container,
+    .right-part {
+      display: block;
+    }
+
+    &__connect {
+      margin-right: 0;
+      margin-bottom: 24px;
+    }
+
+    &__second-part {
+      display: block;
+      margin-top: 48px;
     }
   }
 }

@@ -10,4 +10,11 @@
   width: 100%;
   margin-bottom: 60px;
   padding: 118.5px 48px 0 50px;
+  transform: translate(0, 0);
+}
+
+@media screen and (max-width: 1200px) {
+  .content__base {
+    padding: 118.5px 24px 0;
+  }
 }

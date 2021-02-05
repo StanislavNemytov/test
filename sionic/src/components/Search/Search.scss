@@ -1,6 +1,10 @@
 @import '../index';
 
 .search {
+  max-width: 468px;
+  width: 100%;
+  margin-right: 8px;
+
   &__label {
     border: 1px solid $secondary;
     height: 50px;
@@ -8,7 +12,8 @@
     display: flex;
     align-items: center;
     padding: 4px 4px 4px 20px;
-    width: 468px;
+    max-width: 468px;
+    width: 100%;
 
     &:focus-within {
       outline: auto;
@@ -27,5 +32,14 @@
 
   &__submit {
     height: 42px;
+  }
+}
+
+
+@media screen and (max-width: 767.98px) {
+  .search {
+    &__submit {
+      padding: 10px;
+    }
   }
 }

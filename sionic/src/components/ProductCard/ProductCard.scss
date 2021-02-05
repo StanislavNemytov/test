@@ -1,6 +1,6 @@
 @import '../index';
 
-.removeAllProduct {
+.remove-all-product {
   width: 36px;
   height: 36px;
   display: flex;
@@ -14,7 +14,7 @@
 
 .product-card {
   display: grid;
-  grid-template-columns: 60px 292px 135px 120px auto;
+  grid-template-columns: 60px 292px 135px auto auto;
   column-gap: 20px;
   align-items: center;
 
@@ -66,8 +66,36 @@
     }
   }
 
-  .removeAllProduct {
+  .remove-all-product {
     justify-self: flex-end;
     align-self: start;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .product-card {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 60px 135px auto auto 36px;
+
+    &__name {
+      grid-column: 2/5;
+    }
+
+    &__quantity {
+      grid-column: 2;
+      max-width: 135px;
+    }
+
+    &__price {
+      grid-column: 3/6;
+    }
+
+    .remove-all-product {
+      grid-row: 1;
+      grid-column: 5;
+      align-self: start;
+      justify-self: flex-end;
+    }
   }
 }

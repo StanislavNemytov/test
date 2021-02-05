@@ -7,3 +7,9 @@
   border-left: 1px solid $secondary;
   z-index: 2;
 }
+
+@media screen and (max-width: 992px) {
+  .aside-right {
+    display: none;
+  }
+}

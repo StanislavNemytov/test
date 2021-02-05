@@ -10,11 +10,11 @@ import "./OrdersHistory.scss";
 
 function OrdersHistory({ data: { ordersHistory }, getImages, reducerAPI }) {
   const { images } = reducerAPI;
-  const [orders, setOrders] = useState(JSON.parse(ordersHistory));
+  const [orders, setOrders] = useState(JSON.parse(ordersHistory).reverse());
   let [ordersImages, setOrdersImages] = useState([]);
 
   useEffect(() => {
-    setOrders(JSON.parse(ordersHistory));
+    setOrders(JSON.parse(ordersHistory).reverse());
   }, [ordersHistory]);
 
   useMemo(() => {

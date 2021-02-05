@@ -37,11 +37,11 @@ function ProductCard({ data, removeAllProduct, dataOfState }) {
         <Btn variant="add" id={id} text="+" classes="btn btn-link-menu-blue" />
       </span>
 
-      <span className="h5">{price || "123"} ₽</span>
+      <span className="h5 product-card__price">{price || "123"} ₽</span>
 
       <button
         onClick={() => removeAllProduct(id)}
-        className="removeAllProduct btn btn-link-dark"
+        className="remove-all-product btn btn-link-dark"
       >
         <svg
           width="20"

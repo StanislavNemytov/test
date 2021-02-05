@@ -9,6 +9,7 @@
 
   h4 {
     margin-top: 0;
+    padding-right: 24px;
   }
 
   &__header {
@@ -92,7 +93,7 @@
     }
 
     .number-of-order {
-      flex: 60%;
+      flex: 50%;
 
       .btn {
         height: 16px;
@@ -105,5 +106,11 @@
     position: absolute;
     left: -999999px;
     z-index: -10;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .history__order {
+    border-radius: 10px;
   }
 }

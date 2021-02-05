@@ -7,3 +7,9 @@
     gap: 20px;
   }
 }
+
+@media screen and (max-width: 767.98px) {
+  .history__orders {
+    grid-template-columns: 1fr;
+  }
+}

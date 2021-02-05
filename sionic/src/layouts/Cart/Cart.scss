@@ -63,3 +63,21 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .cart {
+    &__products {
+      padding: 24px;
+    }
+  }
+
+  .buy-box {
+    padding: 24px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .buy-box__images {
+    display: none;
+  }
+}

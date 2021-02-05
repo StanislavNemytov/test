@@ -3,6 +3,7 @@
 .user__avatar {
   $size: 50px;
   width: $size;
+  min-width: $size;
   height: $size;
   border-radius: $size;
   overflow: hidden;

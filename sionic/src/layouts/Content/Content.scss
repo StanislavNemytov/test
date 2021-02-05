@@ -35,3 +35,10 @@
   row-gap: 36px;
   margin-bottom: 36px;
 }
+
+@media screen and (max-width: 576.98px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(47%, 1fr));
+    row-gap: 24px;
+  }
+}

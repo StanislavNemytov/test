@@ -1,4 +1,4 @@
-import { CHANGE_INPUT, SAVE_DATA } from "./actionsDelFormTypes";
+import { CHANGE_INPUT, GET_HISTORY, SAVE_DATA } from "./actionsDelFormTypes";
 
 export const actionsDelForm = {
   changeInput: ({ name, value }) => ({
@@ -10,5 +10,10 @@ export const actionsDelForm = {
   saveOrder: (productsInCart) => ({
     type: SAVE_DATA,
     productsInCart,
+  }),
+
+  getHistory: (history) => ({
+    type: GET_HISTORY,
+    history,
   }),
 };

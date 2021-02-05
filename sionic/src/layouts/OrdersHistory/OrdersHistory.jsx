@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { Order } from "../../components";
+import { getHistory } from "../../store/dispDelForm";
 import { getImages } from "../../store/requests";
 import {
   selectorReducerApi,
@@ -8,18 +9,30 @@ import {
 } from "../../store/selectors/selector";
 import "./OrdersHistory.scss";
 
-function OrdersHistory({ data: { ordersHistory }, getImages, reducerAPI }) {
+function OrdersHistory({
+  data: {
+    ordersHistory: { data },
+  },
+  getImages,
+  reducerAPI,
+  getHistory,
+}) {
   const { images } = reducerAPI;
-  const [orders, setOrders] = useState(JSON.parse(ordersHistory).reverse());
+  const [orders, setOrders] = useState(data || []);
   let [ordersImages, setOrdersImages] = useState([]);
 
-  useEffect(() => {
-    setOrders(JSON.parse(ordersHistory).reverse());
-  }, [ordersHistory]);
-
   useMemo(() => {
+    getHistory();
+  }, [getHistory]);
+
+  useEffect(() => {
+    data && setOrders(data.reverse());
+  }, [data]);
+
+  useEffect(() => {
     setOrdersImages(
-      orders.map(({ productsInOrder }, index) => {
+      orders.map(({ data }, index) => {
+        const { productsInOrder } = JSON.parse(data)[0];
         getImages(productsInOrder[0].product.id);
         return {
           id: productsInOrder[0].product.id,
@@ -29,6 +42,10 @@ function OrdersHistory({ data: { ordersHistory }, getImages, reducerAPI }) {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orders.length]);
+
+  if (!orders) {
+    return null;
+  }
 
   return (
     <section className="history">
@@ -42,7 +59,7 @@ function OrdersHistory({ data: { ordersHistory }, getImages, reducerAPI }) {
             const img = images && images[ordersImages[index].id];
             return (
               <Order
-                {...order}
+                {...JSON.parse(order.data)[0]}
                 img={img}
                 nameOfOrder={ordersImages[index].name}
                 key={index.toString()}
@@ -60,6 +77,6 @@ const mapStateToProps = (state) => ({
   reducerAPI: selectorReducerApi(state),
 });
 
-const mapDispatchToProps = { getImages };
+const mapDispatchToProps = { getImages, getHistory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersHistory);

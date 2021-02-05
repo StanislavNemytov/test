@@ -3,7 +3,14 @@ import {
   REMOVE_ALL_PRODUCT,
   REMOVE_ALL_PRODUCTS,
   REMOVE_PRODUCT,
+  SET_SAVED_DATA,
 } from "../actions/actionsTypes";
+import {
+  addProductToCart,
+  removeAllProductFromCart,
+  changeCountOfProductInCart,
+  removeAllProductsFromCart,
+} from "../requests/request-cart";
 
 const initialState = {
   cartCount: 0,
@@ -11,13 +18,13 @@ const initialState = {
 };
 
 export function reducerCart(
-  state = JSON.parse(localStorage.getItem("cart")) ||
-    JSON.parse(JSON.stringify(initialState)),
+  state = JSON.parse(JSON.stringify(initialState)),
   action
 ) {
   let newCartProducts = JSON.parse(JSON.stringify(state.cartProducts));
   let product;
   let newState;
+  let variantOfAction = changeCountOfProductInCart;
 
   const removeProduct = () => {
     let index;
@@ -39,9 +46,11 @@ export function reducerCart(
 
       if (product) {
         product.count += 1;
+        variantOfAction = changeCountOfProductInCart;
       } else {
         product = { id: action.id, count: 1 };
         newCartProducts.push(product);
+        variantOfAction = addProductToCart;
       }
 
       newState = {
@@ -49,7 +58,7 @@ export function reducerCart(
         cartProducts: newCartProducts,
       };
 
-      localStorage.setItem("cart", JSON.stringify(newState));
+      variantOfAction(newState.cartCount, product);
       return newState;
 
     case REMOVE_PRODUCT:
@@ -59,6 +68,7 @@ export function reducerCart(
 
       if (product.count === 1) {
         removeProduct();
+        variantOfAction = removeAllProductFromCart;
       } else {
         product.count -= 1;
       }
@@ -68,12 +78,14 @@ export function reducerCart(
         cartProducts: newCartProducts,
       };
 
-      localStorage.setItem("cart", JSON.stringify(newState));
+      variantOfAction(newState.cartCount, product);
       return newState;
 
     case REMOVE_ALL_PRODUCTS:
       newState = JSON.parse(JSON.stringify(initialState));
-      localStorage.setItem("cart", JSON.stringify(initialState));
+
+      removeAllProductsFromCart();
+
       return newState;
 
     case REMOVE_ALL_PRODUCT:
@@ -85,8 +97,21 @@ export function reducerCart(
         cartCount: newCartCount,
         cartProducts: newCartProducts,
       };
-      localStorage.setItem("cart", JSON.stringify(newState));
+
+      removeAllProductFromCart(newState.cartCount, product);
       return newState;
+
+    case SET_SAVED_DATA:
+      const {
+        response: {
+          count: {
+            data: { count },
+          },
+          cartProducts: { data },
+        },
+      } = action;
+
+      return { cartCount: count, cartProducts: data };
 
     default:
       return state;

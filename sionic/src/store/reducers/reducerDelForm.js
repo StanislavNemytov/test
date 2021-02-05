@@ -1,4 +1,9 @@
-import { CHANGE_INPUT, SAVE_DATA } from "../actions/actionsDelFormTypes";
+import { serverRequests } from "../../api/apiServer";
+import {
+  CHANGE_INPUT,
+  SAVE_DATA,
+  GET_HISTORY,
+} from "../actions/actionsDelFormTypes";
 
 const initialState = {
   date: "",
@@ -6,7 +11,7 @@ const initialState = {
   address: "",
   name: "",
   tel: "",
-  ordersHistory: localStorage.getItem("ordersHistory") || JSON.stringify([]),
+  ordersHistory: JSON.stringify([]),
 };
 
 function getRandomInt(max) {
@@ -33,12 +38,15 @@ export function reducerDelForm(state = initialState, action) {
 
       newHistory.push(newOrder);
 
-      localStorage.setItem("ordersHistory", JSON.stringify(newHistory));
+      serverRequests.addOrderToHistory(newHistory);
 
       return {
         ...initialState,
         ordersHistory: JSON.stringify(newHistory),
       };
+
+    case GET_HISTORY:
+      return { ...state, ordersHistory: action.history };
 
     default:
       return state;

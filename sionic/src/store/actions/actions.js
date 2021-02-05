@@ -10,6 +10,7 @@ import {
   REMOVE_ALL_PRODUCT,
   REMOVE_CATEGORY_ID,
   GET_NEXT_PRODUCTS,
+  SET_SAVED_DATA,
 } from "./actionsTypes";
 
 export const actions = {
@@ -39,4 +40,5 @@ export const actions = {
 
   removeCategoryId: () => ({ type: REMOVE_CATEGORY_ID }),
 
+  setSaveData: (response) => ({ type: SET_SAVED_DATA, response }),
 };

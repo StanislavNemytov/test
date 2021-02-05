@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
@@ -12,6 +13,7 @@ import {
   OrdersHistory,
 } from "./layouts";
 import { getImages, getProduct } from "./store/requests";
+import { setSavedData } from "./store/requests/request-cart";
 import {
   selectorReducerApi,
   selectorReducerCart,
@@ -21,6 +23,12 @@ const CartWithCantRendering = withCantRendering(Cart);
 const DeliveryWithCantRendering = withCantRendering(Delivery);
 
 function App(props) {
+  const { setSavedData } = props;
+
+  useMemo(() => {
+    setSavedData();
+  }, [setSavedData]);
+
   return (
     <Router>
       <div className="container">
@@ -56,6 +64,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getProduct,
   getImages,
+  setSavedData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

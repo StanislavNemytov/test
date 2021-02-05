@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Btn from "../../components/Btn/Btn";
-import { changeInput, saveOrder } from "../../store/dispDelForm";
+import { changeInput, getHistory, saveOrder } from "../../store/dispDelForm";
 import { removeAllProducts } from "../../store/dispState";
 import { getImages, getProduct } from "../../store/requests";
 import {
@@ -28,8 +28,6 @@ function Delivery({
 
   const history = useHistory();
   const [inputType, setInputType] = useState({ date: "text", time: "text" });
-
-
 
   if (cartProducts.length === 0) {
     history.push("/");
@@ -107,12 +105,7 @@ function Delivery({
             <label htmlFor="address">Куда доставить?</label>
 
             <i className="icon icon_address" aria-hidden="true">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   d="M4 9.68421L16 4L10.3158 16L9.05263 10.9474L4 9.68421Z"
                   stroke="#727280"

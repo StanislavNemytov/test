@@ -1,5 +1,7 @@
 # Test task for company Sionic
 
+Create shop with ReactJS.
+
 ## Stack:
 - React
 - Redux

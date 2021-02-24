@@ -1,14 +1,14 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Btn from "../../components/Btn/Btn";
-import { changeInput, getHistory, saveOrder } from "../../store/dispDelForm";
+import { changeInput, saveOrder } from "../../store/dispDelForm";
 import { removeAllProducts } from "../../store/dispState";
 import { getImages, getProduct } from "../../store/requests";
 import {
   selectorReducerApi,
   selectorReducerCart,
-  selectorReducerDelForm,
+  selectorReducerDelForm
 } from "../../store/selectors/selector";
 import "./Delivery.scss";
 

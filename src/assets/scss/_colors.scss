@@ -1,18 +1,19 @@
-$dark: #2D2D2F;
-$white: #FFFFFF;
+$dark: #2d2d2f;
+$white: #ffffff;
 // $dark: #FFFFFF;
 // $white:#2D2D2F;
 $gray: #727280;
-$gray-disabled: #8D8D8E;
-$blue: #2967FF;
-$secondary: #F0F4FB;
-$green: #58CF18;
-$orange: #FFA601;
-$light-pink:#FF7CB4;
-$pink: #FF2D87;
-$menu-blue:#AEC2EA;
+$gray-disabled: #8d8d8e;
+$blue: #2967ff;
+$secondary: #f0f4fb;
+$green: #58cf18;
+$orange: #ffa601;
+$light-pink: #ff7cb4;
+$pink: #ff2d87;
+$menu-blue: #aec2ea;
 
-$colors: ("blue": $blue,
+$colors: (
+  "blue": $blue,
   // "indigo": $indigo,
   // "purple": $purple,
   "pink": $pink,
@@ -23,12 +24,13 @@ $colors: ("blue": $blue,
   "green": $green,
   // "teal": $teal,
   // "cyan": $cyan,
-  "menu-blue":$menu-blue,
-  "disabled":$gray-disabled,
+  "menu-blue": $menu-blue,
+  "disabled": $gray-disabled,
   "secondary": $secondary,
   "white": $white,
   "gray": $gray,
-  "dark": $dark);
+  "dark": $dark,
+);
 
 $text-black: $dark;
-$text-white:$white;
+$text-white: $white;
